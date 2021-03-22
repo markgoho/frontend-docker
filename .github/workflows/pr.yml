@@ -29,4 +29,4 @@ jobs:
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
       - name: run tests
-        run: docker run ${{ secrets.DOCKER_HUB_USERNAME }}/frontend-docker:latest npm run test -- --coverage
+        run: docker run ${{ secrets.DOCKER_HUB_USERNAME }}/frontend-docker:latest npm run test -- --coverage --watchAll=false
