@@ -24,8 +24,9 @@ jobs:
         with:
           context: ./
           file: ./Dockerfile.dev
-          push: false
+          push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/frontend-docker:latest
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
-      - run: docker run ${{ secrets.DOCKER_HUB_USERNAME }}/frontend-docker:latest npm run test -- --coverage
+      - name: run tests
+        run: docker run ${{ secrets.DOCKER_HUB_USERNAME }}/frontend-docker:latest npm run test -- --coverage
